@@ -1,0 +1,5 @@
+./historical_csvs\historical_data_1746222505_200003.csv
+./historical_csvs\historical_data_1746223402_437941.csv
+./historical_csvs\historical_data_1746224237_798295.csv
+./historical_csvs\historical_data_1746246411_6146832.csv
+./historical_csvs\historical_data_1746247020_5053177.csv
