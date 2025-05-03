@@ -3,7 +3,7 @@ from glob import glob
 from hashlib import sha256
 from typing import Union
 from numpy import ndarray
-from pandas import read_csv, DataFrame, concat, Series
+from pandas import read_csv, DataFrame, concat, Series, to_datetime
 from os.path import exists
 from os import makedirs
 from copy import deepcopy
@@ -12,6 +12,9 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+from statsmodels.tsa.stattools import adfuller
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+from statsmodels.tsa.arima.model import ARIMA
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -177,10 +180,43 @@ def create_ar_models(df: DataFrame, output_folder: str) -> None:
     working_df: DataFrame = deepcopy(df)
 
     input_columns: list[str] = [
-        'temperature', 'air_pressure', 'humidity', 'dew_point', 'clouds',
-        'visibility', 'wind_speed', 'wind_degrees'
+        'timestamp', 'temperature', 'air_pressure', 'humidity', 'dew_point',
+        'clouds', 'visibility', 'wind_speed', 'wind_degrees'
     ]
     working_df = working_df[input_columns]
+    working_df['timestamp'] = to_datetime(working_df['timestamp'], unit='s')
+    working_df = working_df.set_index(['timestamp'])
+
+    # Split data into train and test
+    train_size: int = int(len(working_df) * 0.8)
+    train_split: Series = working_df.iloc[:train_size]
+    test_split: Series = working_df.iloc[train_size:]
+
+    for input_column in input_columns:
+        if input_column == 'timestamp':
+            continue
+
+        # Fit ARIMA model
+        model = ARIMA(train_split[input_column], order=(4, 1, 16))
+        model_fit = model.fit()
+        forecast = model_fit.forecast(steps=len(test_split))
+
+        # Plot the results with specified colors
+        plt.figure(figsize=(14, 7))
+        plt.plot(
+            train_split.index, train_split[input_column], label='Train',
+            color='#203147'
+        )
+        plt.plot(
+            test_split.index, test_split[input_column], label='Test',
+            color='#01ef63'
+        )
+        plt.plot(test_split.index, forecast, label='Forecast', color='orange')
+        plt.title(f'{input_column} Forecast')
+        plt.xlabel('Date')
+        plt.ylabel(input_column)
+        plt.legend()
+        plt.show()
 
 
 def train_models() -> None:
