@@ -18,7 +18,6 @@ API_CALL_COUNT_FOLDER: str = config_settings['API_CALL_COUNT_FOLDER']
 API_CALL_COUNT_LIMIT: int = config_settings['API_CALL_COUNT_LIMIT']
 BSU_LATITUDE: float = config_settings['BSU_LATITUDE']
 BSU_LONGITUDE: float = config_settings['BSU_LONGITUDE']
-UNIT_SYSTEM_TYPE: str = config_settings['UNIT_SYSTEM_TYPE']
 HIST_DAYS: int = config_settings['HIST_DAYS']
 HIST_WEEKS: int = config_settings['HIST_WEEKS']
 HIST_LOG_FOLDER: str = config_settings['HIST_LOG_FOLDER']
@@ -184,7 +183,7 @@ def create_historical() -> None:
         one_call_link: str = (
             f'https://api.openweathermap.org/data/3.0/onecall/timemachine?'
             f'lat={BSU_LATITUDE}&lon={BSU_LONGITUDE}&dt={hist_current}&'
-            f'appid={API_KEY}&units={UNIT_SYSTEM_TYPE}'
+            f'appid={API_KEY}&units=metric'
         )
         print(f'Requesting data for {datetime.fromtimestamp(hist_current)}...')
 

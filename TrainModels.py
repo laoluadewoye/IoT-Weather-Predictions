@@ -3,7 +3,7 @@ from glob import glob
 from hashlib import sha256
 from typing import Union
 from numpy import ndarray
-from pandas import read_csv, DataFrame, concat, Series, to_datetime
+from pandas import read_csv, DataFrame, concat, Series
 from os.path import exists
 from os import makedirs
 from copy import deepcopy
@@ -12,9 +12,6 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
-from statsmodels.tsa.stattools import adfuller
-from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
-from statsmodels.tsa.arima.model import ARIMA
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -54,24 +51,37 @@ def create_csv(output_folder: str, csv_fps: list[str]) -> DataFrame:
     return combined_df
 
 
-def create_encodings(df: DataFrame) -> dict[str, dict]:
-    encodings: dict[str, dict] = {
+def create_encodings(df: DataFrame, output_folder: str) -> dict[str, dict]:
+    forward_encodings: dict[str, dict] = {
+        'owm_weather_id': {},
+        'owm_weather_main': {},
+        'owm_weather_description': {},
+        'owm_weather_icon': {}
+    }
+    reverse_encodings: dict[str, dict] = {
         'owm_weather_id': {},
         'owm_weather_main': {},
         'owm_weather_description': {},
         'owm_weather_icon': {}
     }
 
-    for column_name in encodings.keys():
+    # Populate encodings
+    for column_name in forward_encodings.keys():
         unique_values: ndarray = df[column_name].unique()
         for index_encode in range(len(unique_values)):
             if isinstance(unique_values[index_encode], str):
                 plain_encoding = unique_values[index_encode]
             else:
                 plain_encoding = unique_values[index_encode].item()
-            encodings[column_name][plain_encoding] = index_encode
+            forward_encodings[column_name][plain_encoding] = index_encode
+            reverse_encodings[column_name][index_encode] = plain_encoding
 
-    return encodings
+    # Save reverse encodings for later
+    joblib_dump(
+        reverse_encodings, f'{output_folder}/historical_data_encodings.joblib'
+    )
+
+    return forward_encodings
 
 
 def train_dt_models(scaled_df: DataFrame, input_columns: list[str],
@@ -124,8 +134,8 @@ def create_dt_models(df: DataFrame, output_folder: str) -> None:
     del working_df['timestamp']
 
     input_columns: list[str] = [
-        'temperature', 'air_pressure', 'humidity', 'dew_point', 'clouds',
-        'visibility', 'wind_speed', 'wind_degrees'
+        'temperature', 'air_pressure', 'humidity', 'clouds', 'visibility',
+        'wind_speed'
     ]
     output_columns: list[str] = [
         'owm_weather_id_enc', 'owm_weather_main_enc',
@@ -175,50 +185,6 @@ def create_dt_models(df: DataFrame, output_folder: str) -> None:
     plt.close()
 
 
-def create_ar_models(df: DataFrame, output_folder: str) -> None:
-    # Make a working copy of the dataframe and only keep input columns
-    working_df: DataFrame = deepcopy(df)
-
-    input_columns: list[str] = [
-        'timestamp', 'temperature', 'air_pressure', 'humidity', 'dew_point',
-        'clouds', 'visibility', 'wind_speed', 'wind_degrees'
-    ]
-    working_df = working_df[input_columns]
-    working_df['timestamp'] = to_datetime(working_df['timestamp'], unit='s')
-    working_df = working_df.set_index(['timestamp'])
-
-    # Split data into train and test
-    train_size: int = int(len(working_df) * 0.8)
-    train_split: Series = working_df.iloc[:train_size]
-    test_split: Series = working_df.iloc[train_size:]
-
-    for input_column in input_columns:
-        if input_column == 'timestamp':
-            continue
-
-        # Fit ARIMA model
-        model = ARIMA(train_split[input_column], order=(4, 1, 16))
-        model_fit = model.fit()
-        forecast = model_fit.forecast(steps=len(test_split))
-
-        # Plot the results with specified colors
-        plt.figure(figsize=(14, 7))
-        plt.plot(
-            train_split.index, train_split[input_column], label='Train',
-            color='#203147'
-        )
-        plt.plot(
-            test_split.index, test_split[input_column], label='Test',
-            color='#01ef63'
-        )
-        plt.plot(test_split.index, forecast, label='Forecast', color='orange')
-        plt.title(f'{input_column} Forecast')
-        plt.xlabel('Date')
-        plt.ylabel(input_column)
-        plt.legend()
-        plt.show()
-
-
 def train_models() -> None:
     # Import all csv files in folder
     csv_files: list[str] = glob(f'{HIST_DATA_FOLDER}/*')
@@ -246,7 +212,7 @@ def train_models() -> None:
         combined_df: DataFrame = create_csv(target_folder, csv_files)
 
     # Create a set of encodings to map to columns
-    combined_df_encodings: dict[str, dict] = create_encodings(combined_df)
+    combined_df_encodings: dict[str, dict] = create_encodings(combined_df, target_folder)
 
     for column in combined_df_encodings.keys():
         column_map: dict = combined_df_encodings[column]
@@ -258,9 +224,6 @@ def train_models() -> None:
 
     # Train a set decision tree models to predict string categories
     create_dt_models(combined_df, target_folder)
-
-    # Train a set of autoregressive models to predict individual columns
-    create_ar_models(combined_df, target_folder)
 
 
 if __name__ == '__main__':
