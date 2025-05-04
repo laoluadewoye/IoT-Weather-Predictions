@@ -301,7 +301,3 @@ def make_predictions() -> None:
     forecast_results_df.to_csv(
         f'{target_folder}/forecast_results.csv', index=False
     )
-
-
-if __name__ == '__main__':
-    make_predictions()

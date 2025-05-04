@@ -1,3 +1,4 @@
 .idea/
 create_historical_config_original.toml
 *~
+*cache*

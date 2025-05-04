@@ -234,7 +234,3 @@ def create_historical() -> None:
     historical_data_df.to_csv(
         f'{HIST_DATA_FOLDER}/{hist_csv_filename}.csv', index=False
     )
-
-
-if __name__ == '__main__':
-    create_historical()

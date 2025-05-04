@@ -39,7 +39,6 @@ def create_csv(output_folder: str, csv_fps: list[str]) -> DataFrame:
         else:
             combined_df = concat([combined_df, cur_df], axis=0)
 
-    # TODO: Figure out what to do with -1
     # Organize the dataframe
     combined_df = combined_df.reset_index(drop=True)
     combined_df = combined_df.sort_values(by=['timestamp'])
@@ -224,7 +223,3 @@ def train_models() -> None:
 
     # Train a set decision tree models to predict string categories
     create_dt_models(combined_df, target_folder)
-
-
-if __name__ == '__main__':
-    train_models()
