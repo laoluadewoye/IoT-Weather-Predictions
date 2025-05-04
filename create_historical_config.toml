@@ -1,4 +1,4 @@
-API_KEY = 'GetYourOwnOneAPIKey'
+API_KEY = 'Get your own One Call API key'
 API_CALL_COUNT_FOLDER = './daliy_api_call_counts'
 API_CALL_COUNT_LIMIT = 1000
 BSU_LATITUDE = 39.017701
