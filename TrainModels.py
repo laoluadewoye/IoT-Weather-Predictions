@@ -10,7 +10,7 @@ from copy import deepcopy
 from joblib import dump as joblib_dump
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, export_text, plot_tree
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -84,7 +84,8 @@ def create_encodings(df: DataFrame, output_folder: str) -> dict[str, dict]:
 
 
 def train_dt_models(scaled_df: DataFrame, input_columns: list[str],
-                    output_columns: list[str]) -> tuple:
+                    output_columns: list[str], for_encodings: dict,
+                    output_folder: str) -> tuple:
     # Create training inputs
     x: DataFrame = scaled_df[input_columns]
 
@@ -124,10 +125,36 @@ def train_dt_models(scaled_df: DataFrame, input_columns: list[str],
         # Save model
         dt_models[output_column] = new_dt_model
 
+        model_encoding = for_encodings[output_column.replace('_enc', '')]
+        model_classes = list(model_encoding.keys())[:new_dt_model.n_classes_]
+        model_classes = [str(category) for category in model_classes]
+
+        # Save model text representation
+        new_dt_model_text: str = export_text(
+            new_dt_model, feature_names=input_columns,
+            class_names=model_classes
+        )
+        text_rep_filename = f'dt_{output_column}_tree.txt'
+        with open(f'{output_folder}/{text_rep_filename}', 'w') as tf:
+            tf.write(new_dt_model_text)
+
+        # Save model visual representation
+        fig = plt.figure(figsize=(13, 10))
+        plot_tree(
+            new_dt_model, feature_names=input_columns,
+            class_names=model_classes, filled=True
+        )
+        plt.tight_layout()
+        plt.savefig(
+            f'{output_folder}/dt_{output_column}_tree.png', dpi=600
+        )
+        plt.close()
+
     return dt_models, dt_results
 
 
-def create_dt_models(df: DataFrame, output_folder: str) -> None:
+def create_dt_models(df: DataFrame, output_folder: str,
+                     for_encodings: dict[str, dict]) -> None:
     # Make a working copy of the dataframe and remove timestamps
     working_df: DataFrame = deepcopy(df)
     del working_df['timestamp']
@@ -158,7 +185,7 @@ def create_dt_models(df: DataFrame, output_folder: str) -> None:
 
     # Create and save model structures
     dt_models, dt_results = train_dt_models(
-        scaled_df, input_columns, output_columns
+        scaled_df, input_columns, output_columns, for_encodings, output_folder
     )
     dt_results_df: DataFrame = DataFrame(dt_results)
 
@@ -222,4 +249,8 @@ def train_models() -> None:
     combined_df.to_csv(encoded_filepath, index=False)
 
     # Train a set decision tree models to predict string categories
-    create_dt_models(combined_df, target_folder)
+    create_dt_models(combined_df, target_folder, combined_df_encodings)
+
+
+if __name__ == '__main__':
+    train_models()

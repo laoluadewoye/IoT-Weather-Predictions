@@ -1,0 +1,154 @@
+|--- clouds <= 0.25
+|   |--- visibility <= 0.90
+|   |   |--- wind_speed <= 0.04
+|   |   |   |--- class: 701
+|   |   |--- wind_speed >  0.04
+|   |   |   |--- class: 800
+|   |--- visibility >  0.90
+|   |   |--- humidity <= 0.02
+|   |   |   |--- wind_speed <= 0.18
+|   |   |   |   |--- class: 721
+|   |   |   |--- wind_speed >  0.18
+|   |   |   |   |--- class: 800
+|   |   |--- humidity >  0.02
+|   |   |   |--- humidity <= 0.91
+|   |   |   |   |--- air_pressure <= 0.13
+|   |   |   |   |   |--- temperature <= 0.62
+|   |   |   |   |   |   |--- temperature <= 0.61
+|   |   |   |   |   |   |   |--- class: 800
+|   |   |   |   |   |   |--- temperature >  0.61
+|   |   |   |   |   |   |   |--- class: 721
+|   |   |   |   |   |--- temperature >  0.62
+|   |   |   |   |   |   |--- class: 800
+|   |   |   |   |--- air_pressure >  0.13
+|   |   |   |   |   |--- class: 800
+|   |   |   |--- humidity >  0.91
+|   |   |   |   |--- air_pressure <= 0.35
+|   |   |   |   |   |--- wind_speed <= 0.07
+|   |   |   |   |   |   |--- class: 701
+|   |   |   |   |   |--- wind_speed >  0.07
+|   |   |   |   |   |   |--- class: 800
+|   |   |   |   |--- air_pressure >  0.35
+|   |   |   |   |   |--- class: 800
+|--- clouds >  0.25
+|   |--- clouds <= 0.61
+|   |   |--- wind_speed <= 0.70
+|   |   |   |--- wind_speed <= 0.44
+|   |   |   |   |--- class: 802
+|   |   |   |--- wind_speed >  0.44
+|   |   |   |   |--- humidity <= 0.48
+|   |   |   |   |   |--- class: 802
+|   |   |   |   |--- humidity >  0.48
+|   |   |   |   |   |--- wind_speed <= 0.47
+|   |   |   |   |   |   |--- class: 500
+|   |   |   |   |   |--- wind_speed >  0.47
+|   |   |   |   |   |   |--- class: 802
+|   |   |--- wind_speed >  0.70
+|   |   |   |--- air_pressure <= 0.20
+|   |   |   |   |--- class: 500
+|   |   |   |--- air_pressure >  0.20
+|   |   |   |   |--- class: 802
+|   |--- clouds >  0.61
+|   |   |--- clouds <= 0.81
+|   |   |   |--- air_pressure <= 0.13
+|   |   |   |   |--- temperature <= 0.93
+|   |   |   |   |   |--- wind_speed <= 0.28
+|   |   |   |   |   |   |--- temperature <= 0.66
+|   |   |   |   |   |   |   |--- class: 502
+|   |   |   |   |   |   |--- temperature >  0.66
+|   |   |   |   |   |   |   |--- class: 501
+|   |   |   |   |   |--- wind_speed >  0.28
+|   |   |   |   |   |   |--- humidity <= 0.55
+|   |   |   |   |   |   |   |--- class: 803
+|   |   |   |   |   |   |--- humidity >  0.55
+|   |   |   |   |   |   |   |--- class: 500
+|   |   |   |   |--- temperature >  0.93
+|   |   |   |   |   |--- class: 803
+|   |   |   |--- air_pressure >  0.13
+|   |   |   |   |--- wind_speed <= 0.33
+|   |   |   |   |   |--- temperature <= 0.46
+|   |   |   |   |   |   |--- temperature <= 0.45
+|   |   |   |   |   |   |   |--- class: 803
+|   |   |   |   |   |   |--- temperature >  0.45
+|   |   |   |   |   |   |   |--- class: 721
+|   |   |   |   |   |--- temperature >  0.46
+|   |   |   |   |   |   |--- class: 803
+|   |   |   |   |--- wind_speed >  0.33
+|   |   |   |   |   |--- air_pressure <= 0.42
+|   |   |   |   |   |   |--- class: 803
+|   |   |   |   |   |--- air_pressure >  0.42
+|   |   |   |   |   |   |--- air_pressure <= 0.47
+|   |   |   |   |   |   |   |--- class: 500
+|   |   |   |   |   |   |--- air_pressure >  0.47
+|   |   |   |   |   |   |   |--- class: 803
+|   |   |--- clouds >  0.81
+|   |   |   |--- humidity <= 0.82
+|   |   |   |   |--- temperature <= 0.70
+|   |   |   |   |   |--- humidity <= 0.77
+|   |   |   |   |   |   |--- temperature <= 0.67
+|   |   |   |   |   |   |   |--- class: 804
+|   |   |   |   |   |   |--- temperature >  0.67
+|   |   |   |   |   |   |   |--- temperature <= 0.68
+|   |   |   |   |   |   |   |   |--- class: 500
+|   |   |   |   |   |   |   |--- temperature >  0.68
+|   |   |   |   |   |   |   |   |--- class: 804
+|   |   |   |   |   |--- humidity >  0.77
+|   |   |   |   |   |   |--- wind_speed <= 0.12
+|   |   |   |   |   |   |   |--- temperature <= 0.64
+|   |   |   |   |   |   |   |   |--- air_pressure <= 0.30
+|   |   |   |   |   |   |   |   |   |--- class: 500
+|   |   |   |   |   |   |   |   |--- air_pressure >  0.30
+|   |   |   |   |   |   |   |   |   |--- class: 804
+|   |   |   |   |   |   |   |--- temperature >  0.64
+|   |   |   |   |   |   |   |   |--- class: 502
+|   |   |   |   |   |   |--- wind_speed >  0.12
+|   |   |   |   |   |   |   |--- class: 804
+|   |   |   |   |--- temperature >  0.70
+|   |   |   |   |   |--- temperature <= 0.80
+|   |   |   |   |   |   |--- air_pressure <= 0.42
+|   |   |   |   |   |   |   |--- humidity <= 0.72
+|   |   |   |   |   |   |   |   |--- class: 804
+|   |   |   |   |   |   |   |--- humidity >  0.72
+|   |   |   |   |   |   |   |   |--- humidity <= 0.77
+|   |   |   |   |   |   |   |   |   |--- class: 501
+|   |   |   |   |   |   |   |   |--- humidity >  0.77
+|   |   |   |   |   |   |   |   |   |--- class: 500
+|   |   |   |   |   |   |--- air_pressure >  0.42
+|   |   |   |   |   |   |   |--- temperature <= 0.75
+|   |   |   |   |   |   |   |   |--- class: 804
+|   |   |   |   |   |   |   |--- temperature >  0.75
+|   |   |   |   |   |   |   |   |--- class: 500
+|   |   |   |   |   |--- temperature >  0.80
+|   |   |   |   |   |   |--- class: 804
+|   |   |   |--- humidity >  0.82
+|   |   |   |   |--- temperature <= 0.63
+|   |   |   |   |   |--- humidity <= 0.93
+|   |   |   |   |   |   |--- visibility <= 0.82
+|   |   |   |   |   |   |   |--- humidity <= 0.88
+|   |   |   |   |   |   |   |   |--- class: 502
+|   |   |   |   |   |   |   |--- humidity >  0.88
+|   |   |   |   |   |   |   |   |--- temperature <= 0.53
+|   |   |   |   |   |   |   |   |   |--- class: 701
+|   |   |   |   |   |   |   |   |--- temperature >  0.53
+|   |   |   |   |   |   |   |   |   |--- visibility <= 0.38
+|   |   |   |   |   |   |   |   |   |   |--- class: 501
+|   |   |   |   |   |   |   |   |   |--- visibility >  0.38
+|   |   |   |   |   |   |   |   |   |   |--- class: 804
+|   |   |   |   |   |   |--- visibility >  0.82
+|   |   |   |   |   |   |   |--- humidity <= 0.91
+|   |   |   |   |   |   |   |   |--- class: 804
+|   |   |   |   |   |   |   |--- humidity >  0.91
+|   |   |   |   |   |   |   |   |--- air_pressure <= 0.23
+|   |   |   |   |   |   |   |   |   |--- class: 804
+|   |   |   |   |   |   |   |   |--- air_pressure >  0.23
+|   |   |   |   |   |   |   |   |   |--- class: 501
+|   |   |   |   |   |--- humidity >  0.93
+|   |   |   |   |   |   |--- temperature <= 0.60
+|   |   |   |   |   |   |   |--- class: 500
+|   |   |   |   |   |   |--- temperature >  0.60
+|   |   |   |   |   |   |   |--- class: 804
+|   |   |   |   |--- temperature >  0.63
+|   |   |   |   |   |--- air_pressure <= 0.08
+|   |   |   |   |   |   |--- class: 804
+|   |   |   |   |   |--- air_pressure >  0.08
+|   |   |   |   |   |   |--- class: 500

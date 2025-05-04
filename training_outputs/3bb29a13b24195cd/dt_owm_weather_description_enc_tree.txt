@@ -1,0 +1,151 @@
+|--- clouds <= 0.25
+|   |--- visibility <= 0.90
+|   |   |--- wind_speed <= 0.04
+|   |   |   |--- class: mist
+|   |   |--- wind_speed >  0.04
+|   |   |   |--- class: clear sky
+|   |--- visibility >  0.90
+|   |   |--- humidity <= 0.02
+|   |   |   |--- wind_speed <= 0.18
+|   |   |   |   |--- class: haze
+|   |   |   |--- wind_speed >  0.18
+|   |   |   |   |--- class: clear sky
+|   |   |--- humidity >  0.02
+|   |   |   |--- humidity <= 0.91
+|   |   |   |   |--- air_pressure <= 0.13
+|   |   |   |   |   |--- temperature <= 0.62
+|   |   |   |   |   |   |--- temperature <= 0.61
+|   |   |   |   |   |   |   |--- class: clear sky
+|   |   |   |   |   |   |--- temperature >  0.61
+|   |   |   |   |   |   |   |--- class: haze
+|   |   |   |   |   |--- temperature >  0.62
+|   |   |   |   |   |   |--- class: clear sky
+|   |   |   |   |--- air_pressure >  0.13
+|   |   |   |   |   |--- class: clear sky
+|   |   |   |--- humidity >  0.91
+|   |   |   |   |--- air_pressure <= 0.35
+|   |   |   |   |   |--- wind_speed <= 0.07
+|   |   |   |   |   |   |--- class: mist
+|   |   |   |   |   |--- wind_speed >  0.07
+|   |   |   |   |   |   |--- class: clear sky
+|   |   |   |   |--- air_pressure >  0.35
+|   |   |   |   |   |--- class: clear sky
+|--- clouds >  0.25
+|   |--- clouds <= 0.61
+|   |   |--- wind_speed <= 0.70
+|   |   |   |--- wind_speed <= 0.44
+|   |   |   |   |--- class: scattered clouds
+|   |   |   |--- wind_speed >  0.44
+|   |   |   |   |--- humidity <= 0.48
+|   |   |   |   |   |--- class: scattered clouds
+|   |   |   |   |--- humidity >  0.48
+|   |   |   |   |   |--- temperature <= 0.82
+|   |   |   |   |   |   |--- class: light rain
+|   |   |   |   |   |--- temperature >  0.82
+|   |   |   |   |   |   |--- class: scattered clouds
+|   |   |--- wind_speed >  0.70
+|   |   |   |--- humidity <= 0.50
+|   |   |   |   |--- class: scattered clouds
+|   |   |   |--- humidity >  0.50
+|   |   |   |   |--- class: light rain
+|   |--- clouds >  0.61
+|   |   |--- clouds <= 0.81
+|   |   |   |--- air_pressure <= 0.13
+|   |   |   |   |--- temperature <= 0.93
+|   |   |   |   |   |--- humidity <= 0.76
+|   |   |   |   |   |   |--- humidity <= 0.55
+|   |   |   |   |   |   |   |--- class: broken clouds
+|   |   |   |   |   |   |--- humidity >  0.55
+|   |   |   |   |   |   |   |--- class: light rain
+|   |   |   |   |   |--- humidity >  0.76
+|   |   |   |   |   |   |--- humidity <= 0.87
+|   |   |   |   |   |   |   |--- class: moderate rain
+|   |   |   |   |   |   |--- humidity >  0.87
+|   |   |   |   |   |   |   |--- class: heavy intensity rain
+|   |   |   |   |--- temperature >  0.93
+|   |   |   |   |   |--- class: broken clouds
+|   |   |   |--- air_pressure >  0.13
+|   |   |   |   |--- wind_speed <= 0.33
+|   |   |   |   |   |--- temperature <= 0.46
+|   |   |   |   |   |   |--- temperature <= 0.45
+|   |   |   |   |   |   |   |--- class: broken clouds
+|   |   |   |   |   |   |--- temperature >  0.45
+|   |   |   |   |   |   |   |--- class: haze
+|   |   |   |   |   |--- temperature >  0.46
+|   |   |   |   |   |   |--- class: broken clouds
+|   |   |   |   |--- wind_speed >  0.33
+|   |   |   |   |   |--- air_pressure <= 0.42
+|   |   |   |   |   |   |--- class: broken clouds
+|   |   |   |   |   |--- air_pressure >  0.42
+|   |   |   |   |   |   |--- air_pressure <= 0.47
+|   |   |   |   |   |   |   |--- class: light rain
+|   |   |   |   |   |   |--- air_pressure >  0.47
+|   |   |   |   |   |   |   |--- class: broken clouds
+|   |   |--- clouds >  0.81
+|   |   |   |--- humidity <= 0.82
+|   |   |   |   |--- temperature <= 0.70
+|   |   |   |   |   |--- wind_speed <= 0.11
+|   |   |   |   |   |   |--- air_pressure <= 0.33
+|   |   |   |   |   |   |   |--- visibility <= 0.78
+|   |   |   |   |   |   |   |   |--- class: light rain
+|   |   |   |   |   |   |   |--- visibility >  0.78
+|   |   |   |   |   |   |   |   |--- class: heavy intensity rain
+|   |   |   |   |   |   |--- air_pressure >  0.33
+|   |   |   |   |   |   |   |--- class: overcast clouds
+|   |   |   |   |   |--- wind_speed >  0.11
+|   |   |   |   |   |   |--- temperature <= 0.67
+|   |   |   |   |   |   |   |--- class: overcast clouds
+|   |   |   |   |   |   |--- temperature >  0.67
+|   |   |   |   |   |   |   |--- temperature <= 0.68
+|   |   |   |   |   |   |   |   |--- class: light rain
+|   |   |   |   |   |   |   |--- temperature >  0.68
+|   |   |   |   |   |   |   |   |--- class: overcast clouds
+|   |   |   |   |--- temperature >  0.70
+|   |   |   |   |   |--- temperature <= 0.80
+|   |   |   |   |   |   |--- air_pressure <= 0.42
+|   |   |   |   |   |   |   |--- humidity <= 0.72
+|   |   |   |   |   |   |   |   |--- class: overcast clouds
+|   |   |   |   |   |   |   |--- humidity >  0.72
+|   |   |   |   |   |   |   |   |--- wind_speed <= 0.40
+|   |   |   |   |   |   |   |   |   |--- class: moderate rain
+|   |   |   |   |   |   |   |   |--- wind_speed >  0.40
+|   |   |   |   |   |   |   |   |   |--- class: light rain
+|   |   |   |   |   |   |--- air_pressure >  0.42
+|   |   |   |   |   |   |   |--- humidity <= 0.44
+|   |   |   |   |   |   |   |   |--- class: overcast clouds
+|   |   |   |   |   |   |   |--- humidity >  0.44
+|   |   |   |   |   |   |   |   |--- class: light rain
+|   |   |   |   |   |--- temperature >  0.80
+|   |   |   |   |   |   |--- class: overcast clouds
+|   |   |   |--- humidity >  0.82
+|   |   |   |   |--- temperature <= 0.63
+|   |   |   |   |   |--- humidity <= 0.93
+|   |   |   |   |   |   |--- visibility <= 0.82
+|   |   |   |   |   |   |   |--- humidity <= 0.88
+|   |   |   |   |   |   |   |   |--- class: heavy intensity rain
+|   |   |   |   |   |   |   |--- humidity >  0.88
+|   |   |   |   |   |   |   |   |--- air_pressure <= 0.23
+|   |   |   |   |   |   |   |   |   |--- class: overcast clouds
+|   |   |   |   |   |   |   |   |--- air_pressure >  0.23
+|   |   |   |   |   |   |   |   |   |--- humidity <= 0.91
+|   |   |   |   |   |   |   |   |   |   |--- class: moderate rain
+|   |   |   |   |   |   |   |   |   |--- humidity >  0.91
+|   |   |   |   |   |   |   |   |   |   |--- class: mist
+|   |   |   |   |   |   |--- visibility >  0.82
+|   |   |   |   |   |   |   |--- humidity <= 0.91
+|   |   |   |   |   |   |   |   |--- class: overcast clouds
+|   |   |   |   |   |   |   |--- humidity >  0.91
+|   |   |   |   |   |   |   |   |--- temperature <= 0.58
+|   |   |   |   |   |   |   |   |   |--- class: moderate rain
+|   |   |   |   |   |   |   |   |--- temperature >  0.58
+|   |   |   |   |   |   |   |   |   |--- class: overcast clouds
+|   |   |   |   |   |--- humidity >  0.93
+|   |   |   |   |   |   |--- temperature <= 0.60
+|   |   |   |   |   |   |   |--- class: light rain
+|   |   |   |   |   |   |--- temperature >  0.60
+|   |   |   |   |   |   |   |--- class: overcast clouds
+|   |   |   |   |--- temperature >  0.63
+|   |   |   |   |   |--- air_pressure <= 0.08
+|   |   |   |   |   |   |--- class: overcast clouds
+|   |   |   |   |   |--- air_pressure >  0.08
+|   |   |   |   |   |   |--- class: light rain

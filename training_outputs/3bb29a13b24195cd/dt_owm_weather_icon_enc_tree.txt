@@ -1,0 +1,325 @@
+|--- clouds <= 0.25
+|   |--- wind_speed <= 0.17
+|   |   |--- air_pressure <= 0.92
+|   |   |   |--- visibility <= 0.90
+|   |   |   |   |--- class: 50n
+|   |   |   |--- visibility >  0.90
+|   |   |   |   |--- temperature <= 0.77
+|   |   |   |   |   |--- humidity <= 0.93
+|   |   |   |   |   |   |--- air_pressure <= 0.83
+|   |   |   |   |   |   |   |--- humidity <= 0.17
+|   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |   |--- humidity >  0.17
+|   |   |   |   |   |   |   |   |--- humidity <= 0.60
+|   |   |   |   |   |   |   |   |   |--- temperature <= 0.68
+|   |   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |   |   |--- temperature >  0.68
+|   |   |   |   |   |   |   |   |   |   |--- wind_speed <= 0.02
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |   |   |   |   |--- wind_speed >  0.02
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |   |--- humidity >  0.60
+|   |   |   |   |   |   |   |   |   |--- air_pressure <= 0.18
+|   |   |   |   |   |   |   |   |   |   |--- temperature <= 0.61
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- temperature >  0.61
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |--- air_pressure >  0.18
+|   |   |   |   |   |   |   |   |   |   |--- temperature <= 0.62
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 9
+|   |   |   |   |   |   |   |   |   |   |--- temperature >  0.62
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 5
+|   |   |   |   |   |   |--- air_pressure >  0.83
+|   |   |   |   |   |   |   |--- temperature <= 0.22
+|   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |--- temperature >  0.22
+|   |   |   |   |   |   |   |   |--- humidity <= 0.89
+|   |   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |   |   |--- humidity >  0.89
+|   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |--- humidity >  0.93
+|   |   |   |   |   |   |--- air_pressure <= 0.88
+|   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |--- air_pressure >  0.88
+|   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |--- temperature >  0.77
+|   |   |   |   |   |--- humidity <= 0.39
+|   |   |   |   |   |   |--- humidity <= 0.02
+|   |   |   |   |   |   |   |--- class: 50d
+|   |   |   |   |   |   |--- humidity >  0.02
+|   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |--- humidity >  0.39
+|   |   |   |   |   |   |--- air_pressure <= 0.30
+|   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |--- air_pressure >  0.30
+|   |   |   |   |   |   |   |--- class: 01n
+|   |   |--- air_pressure >  0.92
+|   |   |   |--- class: 01d
+|   |--- wind_speed >  0.17
+|   |   |--- humidity <= 0.41
+|   |   |   |--- temperature <= 0.57
+|   |   |   |   |--- wind_speed <= 0.33
+|   |   |   |   |   |--- humidity <= 0.12
+|   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |--- humidity >  0.12
+|   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |--- wind_speed >  0.33
+|   |   |   |   |   |--- class: 01d
+|   |   |   |--- temperature >  0.57
+|   |   |   |   |--- wind_speed <= 0.68
+|   |   |   |   |   |--- temperature <= 0.73
+|   |   |   |   |   |   |--- air_pressure <= 0.47
+|   |   |   |   |   |   |   |--- wind_speed <= 0.40
+|   |   |   |   |   |   |   |   |--- temperature <= 0.68
+|   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |   |--- temperature >  0.68
+|   |   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |   |--- wind_speed >  0.40
+|   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |--- air_pressure >  0.47
+|   |   |   |   |   |   |   |--- temperature <= 0.59
+|   |   |   |   |   |   |   |   |--- temperature <= 0.59
+|   |   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |   |   |--- temperature >  0.59
+|   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |--- temperature >  0.59
+|   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |--- temperature >  0.73
+|   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |--- wind_speed >  0.68
+|   |   |   |   |   |--- air_pressure <= 0.50
+|   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |--- air_pressure >  0.50
+|   |   |   |   |   |   |--- class: 01d
+|   |   |--- humidity >  0.41
+|   |   |   |--- temperature <= 0.46
+|   |   |   |   |--- air_pressure <= 0.62
+|   |   |   |   |   |--- temperature <= 0.26
+|   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |--- temperature >  0.26
+|   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |--- air_pressure >  0.62
+|   |   |   |   |   |--- temperature <= 0.34
+|   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |--- temperature >  0.34
+|   |   |   |   |   |   |--- humidity <= 0.55
+|   |   |   |   |   |   |   |--- wind_speed <= 0.64
+|   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |--- wind_speed >  0.64
+|   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |--- humidity >  0.55
+|   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |--- temperature >  0.46
+|   |   |   |   |--- air_pressure <= 0.65
+|   |   |   |   |   |--- temperature <= 0.85
+|   |   |   |   |   |   |--- humidity <= 0.53
+|   |   |   |   |   |   |   |--- temperature <= 0.79
+|   |   |   |   |   |   |   |   |--- temperature <= 0.71
+|   |   |   |   |   |   |   |   |   |--- air_pressure <= 0.38
+|   |   |   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |   |   |   |--- air_pressure >  0.38
+|   |   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |   |--- temperature >  0.71
+|   |   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |   |--- temperature >  0.79
+|   |   |   |   |   |   |   |   |--- humidity <= 0.44
+|   |   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |   |   |--- humidity >  0.44
+|   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |--- humidity >  0.53
+|   |   |   |   |   |   |   |--- wind_speed <= 0.28
+|   |   |   |   |   |   |   |   |--- temperature <= 0.69
+|   |   |   |   |   |   |   |   |   |--- air_pressure <= 0.55
+|   |   |   |   |   |   |   |   |   |   |--- humidity <= 0.85
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |   |--- humidity >  0.85
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |   |   |--- air_pressure >  0.55
+|   |   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |   |--- temperature >  0.69
+|   |   |   |   |   |   |   |   |   |--- air_pressure <= 0.18
+|   |   |   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |   |   |   |--- air_pressure >  0.18
+|   |   |   |   |   |   |   |   |   |   |--- temperature <= 0.72
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- temperature >  0.72
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |--- wind_speed >  0.28
+|   |   |   |   |   |   |   |   |--- temperature <= 0.72
+|   |   |   |   |   |   |   |   |   |--- air_pressure <= 0.58
+|   |   |   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |   |   |   |   |--- air_pressure >  0.58
+|   |   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |   |--- temperature >  0.72
+|   |   |   |   |   |   |   |   |   |--- air_pressure <= 0.23
+|   |   |   |   |   |   |   |   |   |   |--- humidity <= 0.70
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |   |--- humidity >  0.70
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 01n
+|   |   |   |   |   |   |   |   |   |--- air_pressure >  0.23
+|   |   |   |   |   |   |   |   |   |   |--- air_pressure <= 0.33
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- air_pressure >  0.33
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |   |--- temperature >  0.85
+|   |   |   |   |   |   |--- class: 01d
+|   |   |   |   |--- air_pressure >  0.65
+|   |   |   |   |   |--- class: 01d
+|--- clouds >  0.25
+|   |--- clouds <= 0.61
+|   |   |--- temperature <= 0.78
+|   |   |   |--- wind_speed <= 0.14
+|   |   |   |   |--- humidity <= 0.77
+|   |   |   |   |   |--- class: 03n
+|   |   |   |   |--- humidity >  0.77
+|   |   |   |   |   |--- temperature <= 0.49
+|   |   |   |   |   |   |--- class: 03d
+|   |   |   |   |   |--- temperature >  0.49
+|   |   |   |   |   |   |--- air_pressure <= 0.20
+|   |   |   |   |   |   |   |--- class: 03d
+|   |   |   |   |   |   |--- air_pressure >  0.20
+|   |   |   |   |   |   |   |--- humidity <= 0.89
+|   |   |   |   |   |   |   |   |--- class: 03n
+|   |   |   |   |   |   |   |--- humidity >  0.89
+|   |   |   |   |   |   |   |   |--- temperature <= 0.56
+|   |   |   |   |   |   |   |   |   |--- class: 03n
+|   |   |   |   |   |   |   |   |--- temperature >  0.56
+|   |   |   |   |   |   |   |   |   |--- class: 03d
+|   |   |   |--- wind_speed >  0.14
+|   |   |   |   |--- temperature <= 0.43
+|   |   |   |   |   |--- class: 03n
+|   |   |   |   |--- temperature >  0.43
+|   |   |   |   |   |--- wind_speed <= 0.28
+|   |   |   |   |   |   |--- humidity <= 0.81
+|   |   |   |   |   |   |   |--- temperature <= 0.53
+|   |   |   |   |   |   |   |   |--- class: 03d
+|   |   |   |   |   |   |   |--- temperature >  0.53
+|   |   |   |   |   |   |   |   |--- air_pressure <= 0.47
+|   |   |   |   |   |   |   |   |   |--- class: 03n
+|   |   |   |   |   |   |   |   |--- air_pressure >  0.47
+|   |   |   |   |   |   |   |   |   |--- wind_speed <= 0.22
+|   |   |   |   |   |   |   |   |   |   |--- class: 03n
+|   |   |   |   |   |   |   |   |   |--- wind_speed >  0.22
+|   |   |   |   |   |   |   |   |   |   |--- class: 03d
+|   |   |   |   |   |   |--- humidity >  0.81
+|   |   |   |   |   |   |   |--- air_pressure <= 0.13
+|   |   |   |   |   |   |   |   |--- class: 03n
+|   |   |   |   |   |   |   |--- air_pressure >  0.13
+|   |   |   |   |   |   |   |   |--- class: 03d
+|   |   |   |   |   |--- wind_speed >  0.28
+|   |   |   |   |   |   |--- air_pressure <= 0.20
+|   |   |   |   |   |   |   |--- class: 10d
+|   |   |   |   |   |   |--- air_pressure >  0.20
+|   |   |   |   |   |   |   |--- class: 03d
+|   |   |--- temperature >  0.78
+|   |   |   |--- temperature <= 0.80
+|   |   |   |   |--- humidity <= 0.51
+|   |   |   |   |   |--- class: 10d
+|   |   |   |   |--- humidity >  0.51
+|   |   |   |   |   |--- class: 03d
+|   |   |   |--- temperature >  0.80
+|   |   |   |   |--- class: 03d
+|   |--- clouds >  0.61
+|   |   |--- humidity <= 0.52
+|   |   |   |--- humidity <= 0.44
+|   |   |   |   |--- air_pressure <= 0.13
+|   |   |   |   |   |--- temperature <= 0.93
+|   |   |   |   |   |   |--- class: 04d
+|   |   |   |   |   |--- temperature >  0.93
+|   |   |   |   |   |   |--- class: 04d
+|   |   |   |   |--- air_pressure >  0.13
+|   |   |   |   |   |--- class: 04d
+|   |   |   |--- humidity >  0.44
+|   |   |   |   |--- temperature <= 0.80
+|   |   |   |   |   |--- wind_speed <= 0.32
+|   |   |   |   |   |   |--- clouds <= 0.87
+|   |   |   |   |   |   |   |--- class: 04d
+|   |   |   |   |   |   |--- clouds >  0.87
+|   |   |   |   |   |   |   |--- air_pressure <= 0.30
+|   |   |   |   |   |   |   |   |--- class: 04d
+|   |   |   |   |   |   |   |--- air_pressure >  0.30
+|   |   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |--- wind_speed >  0.32
+|   |   |   |   |   |   |--- class: 10d
+|   |   |   |   |--- temperature >  0.80
+|   |   |   |   |   |--- class: 04d
+|   |   |--- humidity >  0.52
+|   |   |   |--- temperature <= 0.67
+|   |   |   |   |--- humidity <= 0.89
+|   |   |   |   |   |--- visibility <= 0.72
+|   |   |   |   |   |   |--- class: 10n
+|   |   |   |   |   |--- visibility >  0.72
+|   |   |   |   |   |   |--- temperature <= 0.41
+|   |   |   |   |   |   |   |--- air_pressure <= 0.78
+|   |   |   |   |   |   |   |   |--- class: 04d
+|   |   |   |   |   |   |   |--- air_pressure >  0.78
+|   |   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |   |--- temperature >  0.41
+|   |   |   |   |   |   |   |--- temperature <= 0.66
+|   |   |   |   |   |   |   |   |--- air_pressure <= 0.42
+|   |   |   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |   |   |   |--- air_pressure >  0.42
+|   |   |   |   |   |   |   |   |   |--- temperature <= 0.45
+|   |   |   |   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |   |   |   |   |--- temperature >  0.45
+|   |   |   |   |   |   |   |   |   |   |--- temperature <= 0.64
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |   |--- temperature >  0.64
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |   |   |--- temperature >  0.66
+|   |   |   |   |   |   |   |   |--- air_pressure <= 0.20
+|   |   |   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |   |   |   |--- air_pressure >  0.20
+|   |   |   |   |   |   |   |   |   |--- air_pressure <= 0.38
+|   |   |   |   |   |   |   |   |   |   |--- class: 10n
+|   |   |   |   |   |   |   |   |   |--- air_pressure >  0.38
+|   |   |   |   |   |   |   |   |   |   |--- wind_speed <= 0.22
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |   |   |   |   |   |--- wind_speed >  0.22
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 10n
+|   |   |   |   |--- humidity >  0.89
+|   |   |   |   |   |--- temperature <= 0.63
+|   |   |   |   |   |   |--- temperature <= 0.60
+|   |   |   |   |   |   |   |--- temperature <= 0.55
+|   |   |   |   |   |   |   |   |--- temperature <= 0.50
+|   |   |   |   |   |   |   |   |   |--- clouds <= 0.88
+|   |   |   |   |   |   |   |   |   |   |--- class: 04d
+|   |   |   |   |   |   |   |   |   |--- clouds >  0.88
+|   |   |   |   |   |   |   |   |   |   |--- class: 50n
+|   |   |   |   |   |   |   |   |--- temperature >  0.50
+|   |   |   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |   |   |--- temperature >  0.55
+|   |   |   |   |   |   |   |   |--- air_pressure <= 0.08
+|   |   |   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |   |   |   |--- air_pressure >  0.08
+|   |   |   |   |   |   |   |   |   |--- class: 10n
+|   |   |   |   |   |   |--- temperature >  0.60
+|   |   |   |   |   |   |   |--- humidity <= 0.93
+|   |   |   |   |   |   |   |   |--- class: 04d
+|   |   |   |   |   |   |   |--- humidity >  0.93
+|   |   |   |   |   |   |   |   |--- temperature <= 0.60
+|   |   |   |   |   |   |   |   |   |--- class: 04d
+|   |   |   |   |   |   |   |   |--- temperature >  0.60
+|   |   |   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |--- temperature >  0.63
+|   |   |   |   |   |   |--- class: 10d
+|   |   |   |--- temperature >  0.67
+|   |   |   |   |--- humidity <= 0.77
+|   |   |   |   |   |--- air_pressure <= 0.33
+|   |   |   |   |   |   |--- air_pressure <= 0.13
+|   |   |   |   |   |   |   |--- temperature <= 0.70
+|   |   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |   |   |--- temperature >  0.70
+|   |   |   |   |   |   |   |   |--- class: 10d
+|   |   |   |   |   |   |--- air_pressure >  0.13
+|   |   |   |   |   |   |   |--- class: 04n
+|   |   |   |   |   |--- air_pressure >  0.33
+|   |   |   |   |   |   |--- air_pressure <= 0.42
+|   |   |   |   |   |   |   |--- class: 04d
+|   |   |   |   |   |   |--- air_pressure >  0.42
+|   |   |   |   |   |   |   |--- visibility <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 04d
+|   |   |   |   |   |   |   |--- visibility >  0.50
+|   |   |   |   |   |   |   |   |--- class: 10d
+|   |   |   |   |--- humidity >  0.77
+|   |   |   |   |   |--- class: 10d
